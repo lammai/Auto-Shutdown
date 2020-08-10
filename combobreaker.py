@@ -4,9 +4,9 @@
 
 import math
 
-firstLock = int(input("1st Lock position: "))
-secondLock = int(input("2nd Lock position: "))
-resistLoc = float(input("Resistance location: "))
+firstLock = int(input("1st locked position: "))
+secondLock = int(input("2nd locked position: "))
+resistLoc = float(input("Resistant location:  "))
 print("\n")
 
 firstDigit = math.floor(resistLoc + 5.76)
@@ -46,7 +46,7 @@ except ValueError:
             possible2nd.remove(0)
 
 print("*****************<RESULT>******************")
-print("1st Digit:", firstDigit)
+print("1st Digit :", firstDigit)
 print("2nd Digits:", possible2nd)
-print("3rd Digits:", thirdDigit)
+print("3rd Digit :", thirdDigit)
 print("<=========================================>")
