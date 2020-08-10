@@ -2,7 +2,9 @@ import time
 import psutil
 import os
 import sys
+import platform
 
+osType = platform.system()
 #-----------------Network usage---------------------
 def network_usage_shutdown():
     old_value = 0    
@@ -24,22 +26,29 @@ def send_stat(value):
     mbs = (convert_to_gbit(value))*1000
     print(mbs, "mbs")
     if mbs == 0:
-        os.system("shutdown -s -t 30")
+        if (osType == "Windows"):
+            os.system("shutdown -s -t 30")
+        elif (osType == "Linux"):
+            os.system("shutdown +1")
         sys.exit()
 #-----------------------------------------------------
 
 
 #------------------timed-------------------------       
 def timed_shutdown():
-    userInput = int(input("Enter minutes: "))
-    minutes2seconds = str(userInput * 60)
-    os.system("shutdown -s -t " + minutes2seconds)
+    if (osType == "Windows"):
+        userInput = int(input("Enter minutes: "))
+        minutes2seconds = str(userInput * 60)
+        os.system("shutdown -s -t " + minutes2seconds)
+    elif (osType == "Linux"):
+        userInput = input("Enter minutes: ")
+        os.system("shutdown +" + userInput)
 #-----------------------------------------------------
 
     
 def main():
     print("How would you like to schedule your shutdown?")
-    print("1. Using network usage")
+    print("1. Using network usage (For heavy downloads e.g. games)")
     print("2. Using time")
     userChoice = int(input("---> "))
     if userChoice == 1:
