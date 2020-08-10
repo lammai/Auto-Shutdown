@@ -20,16 +20,16 @@ possible2nd = []
 for x in range(0, 40):
     if (x % 4 == firstDigit % 4):
         modFour.add(x)
-        if (x-2 > 0):
+        if (x-2 >= 0):
             possible2nd.append(x-2)
 
 possible3rd = possible3rd.intersection(modFour)
-print("-----------------------------------")
+print("--------------------------------------------")
 print("1st Digit:", firstDigit)
 print("2nd Digits:", possible2nd)
 print("3rd Digits:", possible3rd)
 thirdDigit = int(input("Which 3rd digit has wider gap? "))
-print("-----------------------------------\n\n")
+print("--------------------------------------------\n\n")
 
 try:
     possible2nd.remove(thirdDigit - 2)
